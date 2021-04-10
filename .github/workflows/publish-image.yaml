@@ -31,6 +31,6 @@ jobs:
           push: true
           tags: |
             gibibyte/rclone-supercronic:latest
-            ghcr.io/0xDAFE/rclone-supercronic:latest
+            ghcr.io/0xdafe/rclone-supercronic:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
