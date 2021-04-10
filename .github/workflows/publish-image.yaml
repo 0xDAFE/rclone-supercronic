@@ -23,6 +23,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gibibyte/rclone-supercron:latest
+          tags: gibibyte/rclone-supercronic:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
