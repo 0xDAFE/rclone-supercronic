@@ -13,6 +13,7 @@ RUN curl -fsSLO "$SUPERCRONIC_URL" \
 
 # Copy entrypoint script
 COPY /docker-entrypoint.sh /bin/entrypoint.sh
+RUN chmod +x /bin/entrypoint.sh
 # Set entrypoint
 ENV PUID=1000 PGID=1000 HOME=/data
 ENTRYPOINT ["/bin/entrypoint.sh", "supercronic"]
