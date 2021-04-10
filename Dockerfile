@@ -1,5 +1,6 @@
 FROM rclone/rclone:latest
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl su-exec
+
 # Install supercronic
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \
     SUPERCRONIC=supercronic-linux-amd64 \
@@ -9,7 +10,11 @@ RUN curl -fsSLO "$SUPERCRONIC_URL" \
  && chmod +x "$SUPERCRONIC" \
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+
+# Copy entrypoint script
+COPY /docker-entrypoint.sh /bin/entrypoint.sh
 # Set entrypoint
-ENTRYPOINT ["supercronic"]
+ENV PUID=1000 PGID=1000 HOME=/data
+ENTRYPOINT ["/bin/entrypoint.sh", "supercronic"]
 # Set default argument
 CMD ["/etc/supercronic/crontab"]
