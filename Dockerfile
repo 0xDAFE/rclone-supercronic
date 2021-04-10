@@ -1,5 +1,5 @@
 FROM rclone/rclone:latest
-RUN apk add curl
+RUN apk add --no-cache curl
 # Install supercronic
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \
     SUPERCRONIC=supercronic-linux-amd64 \
