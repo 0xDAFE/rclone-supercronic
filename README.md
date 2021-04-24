@@ -12,8 +12,10 @@ This image provides an easy way to have a docker container run periodic rclone s
 
 Example (bare docker command):
 ```sh
-docker run -e PUID=$(id -u) -e PGID=$(id -g) -v ${PWD}/crontab:/etc/supercronic/crontab -v ${PWD}/hello.sh:/etc/periodic/custom/hello.sh --rm -it gibibyte/rclone-supercronic
+docker run -e PUID=$(id -u) -e PGID=$(id -g) -v ${PWD}/crontab:/etc/supercronic/crontab -v ${PWD}/hello.sh:/etc/periodic/custom/hello --rm -it gibibyte/rclone-supercronic
 ```
+
+**Note**: When using `run-parts` in the crontab, the scripts must **not** have a file extension (e.g. `.sh`). See [man page](https://man.cx/run-parts)
 
 ## Technical background
 
