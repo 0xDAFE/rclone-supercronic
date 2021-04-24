@@ -1,6 +1,6 @@
 # do daily/weekly/monthly maintenance
 # min	hour	day	month	weekday	command
-*/1	*	*	*	*	/etc/periodic/custom/hello.sh
+*/1	*	*	*	*	/etc/periodic/custom/hello
 */15	*	*	*	*	run-parts /etc/periodic/15min
 0	*	*	*	*	run-parts /etc/periodic/hourly
 0	2	*	*	*	run-parts /etc/periodic/daily
